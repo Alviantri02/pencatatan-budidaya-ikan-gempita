@@ -1,0 +1,726 @@
+/* ============================================================
+   GEMPITA v2 — Pencatatan Module Stylesheet
+   Semua class .pnc-* untuk layout sidebar + halaman pencatatan
+   ============================================================ */
+
+/* ── Layout Utama ─────────────────────────────────────────── */
+.pnc-layout {
+    display: flex;
+    min-height: calc(100vh - 64px);
+    background: var(--bg);
+}
+
+/* ── Sidebar ─────────────────────────────────────────────── */
+.pnc-sidebar {
+    width: 240px;
+    min-width: 240px;
+    background: #fff;
+    border-right: 1.5px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 64px;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+    z-index: 100;
+    flex-shrink: 0;
+}
+.pnc-sidebar-inner {
+    padding: 1.25rem 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* User info di sidebar */
+.pnc-user-info {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .5rem 1.25rem 1.25rem;
+    border-bottom: 1.5px solid var(--border-light);
+    margin-bottom: .5rem;
+}
+.pnc-user-avatar {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, var(--blue-light), var(--blue-dark));
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: .95rem;
+    flex-shrink: 0;
+}
+.pnc-user-name {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: .88rem;
+    color: var(--text);
+    line-height: 1.2;
+}
+.pnc-user-role {
+    font-size: .72rem;
+    color: var(--text-muted);
+    margin-top: .1rem;
+}
+
+/* Nav items */
+.pnc-nav { padding: 0 .75rem; flex: 1; }
+.pnc-nav-label {
+    font-family: var(--font-d);
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    padding: .5rem .5rem .4rem;
+    margin-bottom: .15rem;
+}
+.pnc-nav-item {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .6rem .85rem;
+    border-radius: var(--r-sm);
+    font-family: var(--font-d);
+    font-weight: 500;
+    font-size: .855rem;
+    color: var(--text-body);
+    text-decoration: none;
+    transition: var(--ease);
+    margin-bottom: .1rem;
+}
+.pnc-nav-item i {
+    font-size: 1rem;
+    width: 18px;
+    text-align: center;
+    flex-shrink: 0;
+    color: var(--text-muted);
+    transition: var(--ease);
+}
+.pnc-nav-item:hover { background: var(--blue-soft); color: var(--blue); }
+.pnc-nav-item:hover i { color: var(--blue); }
+.pnc-nav-item.active {
+    background: var(--blue);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: var(--shadow-blue);
+}
+.pnc-nav-item.active i { color: #fff; }
+.pnc-nav-divider {
+    border-top: 1.5px solid var(--border-light);
+    margin: .65rem .5rem;
+}
+.pnc-nav-logout { color: var(--text-muted); }
+.pnc-nav-logout:hover { background: var(--red-soft); color: var(--red); }
+.pnc-nav-logout:hover i { color: var(--red); }
+
+/* ── Main Content ─────────────────────────────────────────── */
+.pnc-main {
+    flex: 1;
+    min-width: 0;
+    padding: 2rem 2rem 3rem;
+    overflow-x: hidden;
+}
+
+/* ── Page Header ─────────────────────────────────────────── */
+.pnc-page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+}
+.pnc-page-title {
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text);
+    margin: 0 0 .2rem;
+    letter-spacing: -.3px;
+}
+.pnc-page-sub {
+    font-size: .84rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* ── Stat Cards (Dashboard) ──────────────────────────────── */
+.pnc-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+}
+.pnc-stat-card {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 1.35rem 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    box-shadow: var(--shadow-xs);
+    transition: var(--ease);
+}
+.pnc-stat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.pnc-stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--r-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+.pnc-stat-red    .pnc-stat-icon { background: var(--red-soft);      color: var(--red);         }
+.pnc-stat-green  .pnc-stat-icon { background: var(--green-soft);    color: var(--green);       }
+.pnc-stat-blue   .pnc-stat-icon { background: var(--blue-soft);     color: var(--blue);        }
+.pnc-stat-yellow .pnc-stat-icon { background: var(--yellow-light);  color: var(--yellow-dark); }
+.pnc-stat-body { flex: 1; min-width: 0; }
+.pnc-stat-label {
+    font-family: var(--font-d);
+    font-size: .76rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    margin-bottom: .3rem;
+}
+.pnc-stat-value {
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 1.45rem;
+    color: var(--text);
+    letter-spacing: -.5px;
+    line-height: 1.2;
+    margin-bottom: .25rem;
+}
+.pnc-stat-note { font-size: .78rem; color: var(--text-muted); line-height: 1.4; }
+
+/* ── Card ─────────────────────────────────────────────────── */
+.pnc-card {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-xs);
+    overflow: hidden;
+}
+.pnc-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.4rem;
+    border-bottom: 1.5px solid var(--border-light);
+    gap: 1rem;
+}
+.pnc-card-title {
+    font-family: var(--font-d);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+    margin: 0;
+}
+.pnc-card-body   { padding: 1.4rem; }
+.pnc-card-footer { padding: .85rem 1.4rem; border-top: 1.5px solid var(--border-light); text-align: center; }
+.pnc-link-all {
+    font-family: var(--font-d);
+    font-weight: 600;
+    font-size: .83rem;
+    color: var(--blue);
+    text-decoration: none;
+    transition: var(--ease);
+}
+.pnc-link-all:hover { color: var(--blue-dark); }
+
+/* ── Table ────────────────────────────────────────────────── */
+.pnc-table-wrap { overflow-x: auto; }
+.pnc-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+.pnc-table thead th {
+    padding: .75rem 1rem;
+    font-family: var(--font-d);
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--text-muted);
+    background: var(--bg);
+    border-bottom: 1.5px solid var(--border);
+    white-space: nowrap;
+}
+.pnc-table tbody td {
+    padding: .85rem 1rem;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: middle;
+    color: var(--text-body);
+}
+.pnc-table tbody tr:last-child td { border-bottom: none; }
+.pnc-table tbody tr:hover { background: var(--blue-soft); }
+.pnc-td-date  { font-family: var(--font-d); font-size: .82rem; color: var(--text-muted); white-space: nowrap; }
+.pnc-td-title { font-family: var(--font-d); font-weight: 600; font-size: .875rem; color: var(--text); line-height: 1.3; }
+.pnc-td-sub   { font-size: .76rem; color: var(--text-muted); margin-top: .15rem; }
+.pnc-td-amount { font-family: var(--font-d); font-weight: 700; font-size: .88rem; white-space: nowrap; }
+
+/* ── Badges ────────────────────────────────────────────────── */
+.pnc-badge {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-d);
+    font-size: .7rem;
+    font-weight: 700;
+    padding: .22rem .65rem;
+    border-radius: 50px;
+    white-space: nowrap;
+    line-height: 1;
+}
+.pnc-badge-blue   { background: var(--blue-soft);    color: var(--blue-dark);   }
+.pnc-badge-green  { background: var(--green-soft);   color: var(--green);       }
+.pnc-badge-red    { background: var(--red-soft);     color: var(--red);         }
+.pnc-badge-yellow { background: var(--yellow-light); color: var(--yellow-dark); }
+.pnc-badge-gray   { background: #f3f4f6;             color: #6b7280;            }
+
+/* ── Status Pills ────────────────────────────────────────── */
+.pnc-status { display: inline-block; font-family: var(--font-d); font-size: .72rem; font-weight: 700; padding: .2rem .65rem; border-radius: 50px; }
+.pnc-status-green  { background: var(--green-soft);   color: var(--green);       }
+.pnc-status-red    { background: var(--red-soft);     color: var(--red);         }
+.pnc-status-yellow { background: var(--yellow-light); color: var(--yellow-dark); }
+
+.pnc-kolam-status { font-family: var(--font-d); font-size: .7rem; font-weight: 700; padding: .2rem .65rem; border-radius: 50px; display: inline-block; }
+.pnc-kolam-status.aktif    { background: var(--green-soft); color: var(--green); }
+.pnc-kolam-status.nonaktif { background: #f3f4f6; color: #6b7280; }
+
+/* ── Buttons Pencatatan ───────────────────────────────────── */
+.btn-pnc-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: var(--blue);
+    color: #fff;
+    font-family: var(--font-d);
+    font-weight: 600;
+    font-size: .875rem;
+    padding: .55rem 1.25rem;
+    border: none;
+    border-radius: var(--r-sm);
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--ease);
+    white-space: nowrap;
+}
+.btn-pnc-primary:hover { background: var(--blue-dark); color: #fff; transform: translateY(-1px); box-shadow: var(--shadow-blue); }
+.btn-pnc-primary.btn-pnc-lg { padding: .72rem 2rem; font-size: .92rem; }
+
+.btn-pnc-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: var(--font-d);
+    font-weight: 600;
+    font-size: .875rem;
+    padding: .55rem 1.25rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-sm);
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--ease);
+}
+.btn-pnc-outline:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-soft); }
+
+.btn-pnc-icon {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-sm);
+    width: 34px; height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--ease);
+    font-size: .9rem;
+}
+.btn-pnc-icon:hover { background: var(--blue-soft); color: var(--blue); border-color: var(--blue-mid); }
+
+.btn-pnc-action {
+    width: 30px; height: 30px;
+    border-radius: var(--r-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .82rem;
+    cursor: pointer;
+    border: 1.5px solid var(--border);
+    background: #fff;
+    transition: var(--ease);
+    text-decoration: none;
+    color: var(--text-muted);
+}
+.btn-edit:hover { background: var(--blue-soft); color: var(--blue); border-color: var(--blue-mid); }
+.btn-del { border: none; }
+.btn-del:hover { background: var(--red-soft); color: var(--red); }
+
+/* ── Form Pencatatan ─────────────────────────────────────── */
+.pnc-form-intro { font-size: .85rem; color: var(--text-muted); margin-bottom: 1.4rem; }
+.pnc-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem 1.5rem; }
+.pnc-form-full { grid-column: 1 / -1; }
+.pnc-form-group { display: flex; flex-direction: column; }
+.pnc-label {
+    font-family: var(--font-d);
+    font-weight: 600;
+    font-size: .82rem;
+    color: var(--text);
+    margin-bottom: .4rem;
+}
+.pnc-input, .pnc-select, .pnc-textarea {
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-sm);
+    padding: .6rem .9rem;
+    font-family: var(--font-b);
+    font-size: .9rem;
+    color: var(--text);
+    background: #fff;
+    transition: var(--ease);
+    width: 100%;
+}
+.pnc-input:focus, .pnc-select:focus, .pnc-textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(26,111,212,.1);
+    outline: none;
+}
+.pnc-input::placeholder, .pnc-textarea::placeholder { color: var(--text-light); }
+.pnc-input-readonly { background: var(--bg); color: var(--text-muted); cursor: default; }
+.pnc-textarea { resize: vertical; min-height: 80px; }
+.pnc-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right .85rem center;
+    padding-right: 2.2rem;
+}
+.pnc-form-actions { display: flex; align-items: center; gap: .75rem; margin-top: 1.5rem; }
+.pnc-form-note {
+    margin-top: 1.2rem;
+    padding: .75rem 1rem;
+    background: var(--blue-soft);
+    border-radius: var(--r-sm);
+    font-size: .82rem;
+    color: var(--blue-dark);
+    font-family: var(--font-d);
+    font-weight: 500;
+}
+
+/* ── Alert ─────────────────────────────────────────────────── */
+.pnc-alert {
+    padding: .85rem 1rem;
+    border-radius: var(--r-sm);
+    font-family: var(--font-d);
+    font-size: .855rem;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: .5rem;
+}
+.pnc-alert-danger  { background: var(--red-soft);   color: #b91c1c;          border: 1px solid #fecaca;   }
+.pnc-alert-info    { background: var(--blue-soft);  color: var(--blue-dark); border: 1px solid var(--blue-mid); }
+.pnc-alert-success { background: var(--green-soft); color: #15803d;          border: 1px solid #bbf7d0;   }
+
+/* ── Empty State ─────────────────────────────────────────── */
+.pnc-empty { text-align: center; padding: 3.5rem 2rem; color: var(--text-muted); }
+.pnc-empty i { font-size: 2.75rem; display: block; margin-bottom: .85rem; color: var(--text-light); }
+.pnc-empty p { font-size: .9rem; margin-bottom: 0; }
+
+/* ── Search Bar ──────────────────────────────────────────── */
+.pnc-search-bar { padding: .75rem 1.4rem; border-bottom: 1px solid var(--border-light); }
+.pnc-search-input {
+    width: 100%; max-width: 340px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-sm);
+    padding: .5rem .85rem;
+    font-family: var(--font-b);
+    font-size: .875rem;
+    color: var(--text);
+    background: var(--bg);
+    transition: var(--ease);
+}
+.pnc-search-input:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(26,111,212,.1); background: #fff; }
+
+/* ── Kolam Summary Cards ─────────────────────────────────── */
+.pnc-kolam-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    padding: 1.25rem;
+}
+.pnc-kolam-card {
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 1.1rem 1.15rem;
+    background: var(--bg);
+    transition: var(--ease);
+}
+.pnc-kolam-card:hover { border-color: rgba(26,111,212,.3); background: var(--blue-soft); box-shadow: var(--shadow-sm); }
+.pnc-kolam-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: .9rem; }
+.pnc-kolam-name { font-family: var(--font-d); font-weight: 700; font-size: .92rem; color: var(--text); }
+.pnc-kolam-jenis { font-size: .76rem; color: var(--text-muted); margin-top: .15rem; }
+.pnc-kolam-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: .5rem; }
+.pnc-kolam-stat-label { font-size: .67rem; color: var(--text-light); font-family: var(--font-d); text-transform: uppercase; letter-spacing: .3px; margin-bottom: .15rem; }
+.pnc-kolam-stat-val { font-family: var(--font-d); font-weight: 700; font-size: .8rem; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .pnc-sidebar { width: 200px; min-width: 200px; }
+    .pnc-main { padding: 1.5rem 1.5rem 3rem; }
+}
+@media (max-width: 768px) {
+    .pnc-layout { flex-direction: column; }
+    .pnc-sidebar { width: 100%; min-width: unset; height: auto; position: static; border-right: none; border-bottom: 1.5px solid var(--border); }
+    .pnc-sidebar-inner { padding: 1rem 0; }
+    .pnc-nav { display: flex; flex-wrap: wrap; gap: .25rem; padding: 0 .75rem .5rem; }
+    .pnc-nav-label, .pnc-nav-divider { display: none; }
+    .pnc-nav-item { padding: .45rem .75rem; font-size: .8rem; flex-shrink: 0; }
+    .pnc-user-info { padding: .75rem 1rem; }
+    .pnc-main { padding: 1.25rem 1rem 3rem; }
+    .pnc-form-grid { grid-template-columns: 1fr; }
+    .pnc-form-full { grid-column: 1; }
+    .pnc-page-header { flex-direction: column; align-items: flex-start; }
+    .pnc-stats-grid { grid-template-columns: 1fr; }
+    .pnc-kolam-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Tab Navigation (Hasil Panen) ────────────────────────── */
+.pnc-tab-nav {
+    display: flex;
+    gap: .35rem;
+    margin-bottom: 1.25rem;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-md);
+    padding: .35rem;
+    width: fit-content;
+}
+.pnc-tab {
+    display: inline-flex;
+    align-items: center;
+    padding: .5rem 1.1rem;
+    border-radius: var(--r-sm);
+    font-family: var(--font-d);
+    font-weight: 600;
+    font-size: .855rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: var(--ease);
+    white-space: nowrap;
+}
+.pnc-tab:hover { color: var(--blue); background: var(--blue-soft); }
+.pnc-tab.active {
+    background: var(--blue);
+    color: #fff;
+    box-shadow: var(--shadow-blue);
+}
+
+/* ── Stat Pill (page header kanan) ───────────────────────── */
+.pnc-stat-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-md);
+    padding: .55rem 1rem;
+    box-shadow: var(--shadow-xs);
+    flex-shrink: 0;
+}
+.pnc-stat-pill-label {
+    font-family: var(--font-d);
+    font-size: .7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    margin-bottom: .15rem;
+}
+.pnc-stat-pill-val {
+    font-family: var(--font-d);
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -.3px;
+}
+
+/* ── Filter Bar (Kalkulasi) ──────────────────────────────── */
+.pnc-filter-bar {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-md);
+    padding: .85rem 1.25rem;
+    margin-bottom: 1.25rem;
+    box-shadow: var(--shadow-xs);
+}
+.pnc-filter-form {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+.pnc-filter-group {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+}
+.pnc-filter-label {
+    font-family: var(--font-d);
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+.pnc-filter-select {
+    width: auto !important;
+    min-width: 160px;
+    padding: .4rem .8rem;
+    font-size: .855rem;
+}
+
+/* ── Rekap Card (Kalkulasi) ──────────────────────────────── */
+.pnc-rekap-card { margin-bottom: 1.25rem; }
+
+.pnc-rekap-body {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 0;
+}
+.pnc-rekap-detail {
+    padding: 1.35rem 1.5rem;
+    border-right: 1.5px solid var(--border-light);
+}
+.pnc-rekap-chart {
+    padding: 1.35rem 1.5rem;
+    background: var(--bg);
+}
+.pnc-rekap-chart-title {
+    font-family: var(--font-d);
+    font-size: .72rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    margin-bottom: .85rem;
+}
+
+.pnc-rekap-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .45rem 0;
+    gap: 1rem;
+}
+.pnc-rekap-label {
+    font-family: var(--font-d);
+    font-size: .875rem;
+    color: var(--text-body);
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+}
+.pnc-rekap-label small { font-weight: 400; }
+.pnc-rekap-val {
+    font-family: var(--font-d);
+    font-weight: 600;
+    font-size: .9rem;
+    white-space: nowrap;
+}
+.pnc-rekap-divider {
+    border-top: 1.5px dashed var(--border);
+    margin: .4rem 0;
+}
+.pnc-rekap-subtotal .pnc-rekap-label,
+.pnc-rekap-subtotal .pnc-rekap-val {
+    font-weight: 700;
+}
+.pnc-rekap-total {
+    padding: .6rem 0;
+    margin-top: .2rem;
+}
+.pnc-rekap-total .pnc-rekap-label {
+    font-weight: 700;
+    font-size: .92rem;
+}
+.pnc-rekap-roi {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .3rem .65rem;
+    background: var(--bg);
+    border-radius: var(--r-sm);
+    margin-top: .5rem;
+    font-family: var(--font-d);
+    font-size: .8rem;
+    color: var(--text-muted);
+}
+.pnc-rekap-footer {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: .75rem 1.5rem;
+    border-top: 1.5px solid var(--border-light);
+    background: var(--bg);
+}
+
+/* ── Progress Bars (Komposisi Modal) ─────────────────────── */
+.pnc-progress-bar-wrap { margin-bottom: .75rem; }
+.pnc-progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-d);
+    font-size: .76rem;
+    color: var(--text-muted);
+    margin-bottom: .3rem;
+}
+.pnc-progress-track {
+    height: 8px;
+    background: var(--border);
+    border-radius: 50px;
+    overflow: hidden;
+}
+.pnc-progress-fill {
+    height: 100%;
+    border-radius: 50px;
+    transition: width .6s ease;
+}
+.pnc-fill-blue   { background: var(--blue); }
+.pnc-fill-yellow { background: var(--yellow-dark); }
+.pnc-fill-red    { background: var(--red); }
+.pnc-fill-green  { background: var(--green); }
+
+/* ── Helper ──────────────────────────────────────────────── */
+.fw-600 { font-weight: 600; }
+.fw-700 { font-weight: 700; }
+.fw-800 { font-weight: 800; }
+.text-green  { color: var(--green)  !important; }
+.text-red    { color: var(--red)    !important; }
+.text-yellow { color: var(--yellow-dark) !important; }
+.text-blue   { color: var(--blue)   !important; }
+.text-muted  { color: var(--text-muted) !important; }
+.mt-3  { margin-top: 1rem; }
+.mt-4  { margin-top: 1.5rem; }
+.d-flex       { display: flex; }
+.align-items-center { align-items: center; }
+.gap-1 { gap: .25rem; }
+.gap-2 { gap: .5rem; }
+.flex-wrap    { flex-wrap: wrap; }
+.text-end     { text-align: right; }
+.text-center  { text-align: center; }
+
+/* Responsive rekap body */
+@media (max-width: 900px) {
+    .pnc-rekap-body { grid-template-columns: 1fr; }
+    .pnc-rekap-detail { border-right: none; border-bottom: 1.5px solid var(--border-light); }
+    .pnc-rekap-chart { background: #fff; }
+}
